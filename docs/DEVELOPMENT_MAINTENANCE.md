@@ -1,6 +1,35 @@
 # Upgrading to a new version
 
-TBD
+1. Update your helm repo
+
+    ```bash
+    helm repo update crossplane-stable
+
+2. If you need to see what versions are available you can list them:
+
+    ```bash
+    helm search repo -l crossplane-stable
+    ```
+
+3. Pull down the new version of the chart
+
+    ```bash
+    helm pull crossplane-stable/crossplane --version v1.11.1
+    ```
+
+4. Extract the resulting tar to the `chart dir and strip the first directory
+
+    ```bash
+    tar -zxf crossplane-1.11.1.tgz -C chart --strip-components=1
+    ```
+
+5. Review the differences, add any missing info to `values.yaml` or `Chart.yaml`
+
+6. Remove the tarball
+
+    ```bash
+    rm -rf crossplane-1.11.1.tgz
+    ```
 
 # How to test Crossplane
 
