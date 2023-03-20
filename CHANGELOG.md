@@ -4,6 +4,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [1.11.1-bb.0] - 2023-03-17
+- Update chart to v1.11.1
+
 ## [0.0.0-bb.0] - YYYY-MM-DD
 ### Changetype (https://keepachangelog.com/en/1.0.0/#how)
 - Brief description of changes
