@@ -4,7 +4,7 @@ deploymentStrategy: RollingUpdate
 
 image:
   repository: registry1.dso.mil/ironbank/opensource/crossplane/crossplane
-  tag: v1.11.1
+  tag: v1.11.3
   pullPolicy: IfNotPresent
 
 nodeSelector: {}
@@ -103,7 +103,7 @@ xfn:
   enabled: false
   image:
     repository: crossplane/xfn
-    tag: v1.11.1
+    tag: v1.11.3
     pullPolicy: IfNotPresent
   args: {}
   extraEnvVars: {}
@@ -132,7 +132,6 @@ xfn:
     requests:
       cpu: 1000m
       memory: 1Gi
-
 
 istio:
   # Toggle istio integration
