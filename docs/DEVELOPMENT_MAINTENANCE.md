@@ -4,6 +4,7 @@
 
     ```bash
     helm repo update crossplane-stable
+    ```
 
 2. If you need to see what versions are available you can list them:
 
@@ -29,6 +30,12 @@
 
     ```bash
     rm -rf crossplane-1.11.1.tgz
+    ```
+
+7. Update the README
+
+    ```bash
+    curl -LO https://repo1.dso.mil/big-bang/apps/library-charts/gluon/-/raw/master/docs/README.md.gotmpl && curl -LO https://repo1.dso.mil/big-bang/apps/library-charts/gluon/-/raw/master/docs/.helmdocsignore && curl -LO https://repo1.dso.mil/big-bang/apps/library-charts/gluon/-/raw/master/docs/_templates.gotmpl && docker run --rm -v "`pwd`:/helm-docs" -u $(id -u) jnorwood/helm-docs:v1.10.0 -s file -t /helm-docs/README.md.gotmpl -t /helm-docs/_templates.gotmpl --dry-run > README.md && rm .helmdocsignore README.md.gotmpl _templates.gotmpl
     ```
 
 # How to test Crossplane
