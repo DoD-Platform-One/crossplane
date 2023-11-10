@@ -1,6 +1,6 @@
 # crossplane
 
-![Version: 1.13.1-bb.0](https://img.shields.io/badge/Version-1.13.1--bb.0-informational?style=flat-square) ![AppVersion: 1.13.1](https://img.shields.io/badge/AppVersion-1.13.1-informational?style=flat-square)
+![Version: 1.14.0-bb.0](https://img.shields.io/badge/Version-1.14.0--bb.0-informational?style=flat-square) ![AppVersion: 1.14.0](https://img.shields.io/badge/AppVersion-1.14.0-informational?style=flat-square)
 
 Crossplane is an open source Kubernetes add-on that enables platform teams to assemble infrastructure from multiple vendors, and expose higher level self-service APIs for application teams to consume.
 
@@ -36,12 +36,12 @@ helm install crossplane chart/
 | replicas | int | `1` | The number of Crossplane pod `replicas` to deploy. |
 | deploymentStrategy | string | `"RollingUpdate"` | The deployment strategy for the Crossplane and RBAC Manager pods. |
 | image.repository | string | `"registry1.dso.mil/ironbank/opensource/crossplane/crossplane"` | Repository for the Crossplane pod image. |
-| image.tag | string | `""` | The Crossplane image tag. Defaults to the value of `appVersion` in Chart.yaml. |
+| image.tag | string | `""` | The Crossplane image tag. Defaults to the value of `appVersion` in `Chart.yaml`. |
 | image.pullPolicy | string | `"IfNotPresent"` | The image pull policy used for Crossplane and RBAC Manager pods. |
 | nodeSelector | object | `{}` | Add `nodeSelectors` to the Crossplane pod deployment. |
 | tolerations | list | `[]` | Add `tolerations` to the Crossplane pod deployment. |
 | affinity | object | `{}` | Add `affinities` to the Crossplane pod deployment. |
-| hostNetwork | bool | `false` | Enable `hostNetwork` for the Crossplane deployment. Caution: enabling `hostNetwork`` grants the Crossplane Pod access to the host network namespace. |
+| hostNetwork | bool | `false` | Enable `hostNetwork` for the Crossplane deployment. Caution: enabling `hostNetwork` grants the Crossplane Pod access to the host network namespace. |
 | customLabels | object | `{}` | Add custom `labels` to the Crossplane pod deployment. |
 | customAnnotations | object | `{}` | Add custom `annotations` to the Crossplane pod deployment. |
 | serviceAccount.customAnnotations | object | `{}` | Add custom `annotations` to the Crossplane ServiceAccount. |
@@ -71,7 +71,7 @@ helm install crossplane chart/
 | securityContextCrossplane.runAsGroup | int | `65532` | The group ID used by the Crossplane pod. |
 | securityContextCrossplane.allowPrivilegeEscalation | bool | `false` | Enable `allowPrivilegeEscalation` for the Crossplane pod. |
 | securityContextCrossplane.readOnlyRootFilesystem | bool | `true` | Set the Crossplane pod root file system as read-only. |
-| packageCache.medium | string | `""` | Set to `Memory` to hold the package cache in a RAM-backed file system. Useful for Crossplane development. |
+| packageCache.medium | string | `""` | Set to `Memory` to hold the package cache in a RAM backed file system. Useful for Crossplane development. |
 | packageCache.sizeLimit | string | `"20Mi"` | The size limit for the package cache. If medium is `Memory` the `sizeLimit` can't exceed Node memory. |
 | packageCache.pvc | string | `""` | The name of a PersistentVolumeClaim to use as the package cache. Disables the default package cache `emptyDir` Volume. |
 | packageCache.configMap | string | `""` | The name of a ConfigMap to use as the package cache. Disables the default package cache `emptyDir` Volume. |
@@ -90,26 +90,7 @@ helm install crossplane chart/
 | podSecurityContextRBACManager | object | `{}` | Add a custom `securityContext` to the RBAC Manager pod. |
 | extraVolumesCrossplane | object | `{}` | Add custom `volumes` to the Crossplane pod. |
 | extraVolumeMountsCrossplane | object | `{}` | Add custom `volumeMounts` to the Crossplane pod. |
-| xfn.enabled | bool | `false` | Enable the alpha Composition functions (`xfn`) sidecar container. Also requires Crossplane `args` value `--enable-composition-functions` set. |
-| xfn.image.repository | string | `"crossplane/xfn"` | Composite function runner container image. |
-| xfn.image.tag | string | `""` | Composite function runner container image tag. Defaults to the value of `appVersion` in Chart.yaml. |
-| xfn.image.pullPolicy | string | `"IfNotPresent"` | Composite function runner container image pull policy. |
-| xfn.args | list | `[]` | Add custom arguments to the Composite functions runner container. |
-| xfn.extraEnvVars | object | `{}` | Add custom environmental variables to the Composite function runner container. Replaces any `.` in a variable name with `_`. For example, `SAMPLE.KEY=value1` becomes `SAMPLE_KEY=value1`. |
-| xfn.securityContext.runAsUser | int | `65532` | The user ID used by the Composite function runner container. |
-| xfn.securityContext.runAsGroup | int | `65532` | The group ID used by the Composite function runner container. |
-| xfn.securityContext.allowPrivilegeEscalation | bool | `false` | Enable `allowPrivilegeEscalation` for the Composite function runner container. |
-| xfn.securityContext.readOnlyRootFilesystem | bool | `true` | Set the Composite function runner container root file system as read-only. |
-| xfn.securityContext.capabilities.add | list | `["SETUID","SETGID"]` | Set Linux capabilities for the Composite function runner container. The default values allow the container to create an unprivileged user namespace for running Composite function containers. |
-| xfn.securityContext.seccompProfile.type | string | `"Unconfined"` | Apply a `seccompProfile` to the Composite function runner container. The default value allows the Composite function runner container permissions to use the `unshare` syscall. |
-| xfn.cache.medium | string | `""` | Set to `Memory` to hold the Composite function runner package cache in a RAM-backed file system. Useful for Crossplane development. |
-| xfn.cache.sizeLimit | string | `"1Gi"` | The size limit for the Composite function runner package cache. If medium is `Memory` the `sizeLimit` can't exceed Node memory. |
-| xfn.cache.pvc | string | `""` | The name of a PersistentVolumeClaim to use as the Composite function runner package cache. Disables the default Composite function runner package cache `emptyDir` Volume. |
-| xfn.cache.configMap | string | `""` | The name of a ConfigMap to use as the Composite function runner package cache. Disables the default Composite function runner package cache `emptyDir` Volume. |
-| xfn.resources.limits.cpu | string | `"2000m"` | CPU resource limits for the Composite function runner container. |
-| xfn.resources.limits.memory | string | `"2Gi"` | Memory resource limits for the Composite function runner container. |
-| xfn.resources.requests.cpu | string | `"1000m"` | CPU resource requests for the Composite function runner container. |
-| xfn.resources.requests.memory | string | `"1Gi"` | Memory resource requests for the Composite function runner container. |
+| extraObjects | list | `[]` | To add arbitrary Kubernetes Objects during a Helm Install |
 | istio.enabled | bool | `false` | Toggle istio integration |
 | istio.mtls | object | `{"mode":"STRICT"}` | Default Crossplane peer authentication |
 | istio.mtls.mode | string | `"STRICT"` | STRICT = Allow only mutual TLS traffic, PERMISSIVE = Allow both plain text and mutual TLS traffic |
