@@ -1,6 +1,6 @@
 # crossplane
 
-![Version: 1.14.0-bb.0](https://img.shields.io/badge/Version-1.14.0--bb.0-informational?style=flat-square) ![AppVersion: 1.14.0](https://img.shields.io/badge/AppVersion-1.14.0-informational?style=flat-square)
+![Version: 1.14.1-bb.0](https://img.shields.io/badge/Version-1.14.1--bb.0-informational?style=flat-square) ![AppVersion: 1.14.1](https://img.shields.io/badge/AppVersion-1.14.1-informational?style=flat-square)
 
 Crossplane is an open source Kubernetes add-on that enables platform teams to assemble infrastructure from multiple vendors, and expose higher level self-service APIs for application teams to consume.
 
