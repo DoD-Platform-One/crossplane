@@ -1,6 +1,6 @@
 # crossplane
 
-![Version: 1.14.5-bb.0](https://img.shields.io/badge/Version-1.14.5--bb.0-informational?style=flat-square) ![AppVersion: 1.14.5](https://img.shields.io/badge/AppVersion-1.14.5-informational?style=flat-square)
+![Version: 1.15.0-bb.0](https://img.shields.io/badge/Version-1.15.0--bb.0-informational?style=flat-square) ![AppVersion: 1.15.0](https://img.shields.io/badge/AppVersion-1.15.0-informational?style=flat-square)
 
 Crossplane is an open source Kubernetes add-on that enables platform teams to assemble infrastructure from multiple vendors, and expose higher level self-service APIs for application teams to consume.
 
@@ -56,7 +56,6 @@ helm install crossplane chart/
 | rbacManager.deploy | bool | `true` | Deploy the RBAC Manager pod and its required roles. |
 | rbacManager.skipAggregatedClusterRoles | bool | `false` | Don't install aggregated Crossplane ClusterRoles. |
 | rbacManager.replicas | int | `1` | The number of RBAC Manager pod `replicas` to deploy. |
-| rbacManager.managementPolicy | string | `"Basic"` | Defines the Roles and ClusterRoles the RBAC Manager creates and manages. - A policy of `Basic` creates and binds Roles only for the Crossplane ServiceAccount, Provider ServiceAccounts and creates Crossplane ClusterRoles. - A policy of `All` includes all the `Basic` settings and also creates Crossplane Roles in all namespaces. - Read the Crossplane docs for more information on the [RBAC Roles and ClusterRoles](https://docs.crossplane.io/latest/concepts/pods/#crossplane-clusterroles) |
 | rbacManager.leaderElection | bool | `true` | Enable [leader election](https://docs.crossplane.io/latest/concepts/pods/#leader-election) for the RBAC Manager pod. |
 | rbacManager.args | list | `[]` | Add custom arguments to the RBAC Manager pod. |
 | rbacManager.nodeSelector | object | `{}` | Add `nodeSelectors` to the RBAC Manager pod deployment. |
