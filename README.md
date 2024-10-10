@@ -1,11 +1,16 @@
+<!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # crossplane
 
-![Version: 1.15.0-bb.0](https://img.shields.io/badge/Version-1.15.0--bb.0-informational?style=flat-square) ![AppVersion: 1.15.0](https://img.shields.io/badge/AppVersion-1.15.0-informational?style=flat-square)
+![Version: 1.16.0-bb.0](https://img.shields.io/badge/Version-1.16.0--bb.0-informational?style=flat-square) ![AppVersion: 1.16.0](https://img.shields.io/badge/AppVersion-1.16.0-informational?style=flat-square)
 
 Crossplane is an open source Kubernetes add-on that enables platform teams to assemble infrastructure from multiple vendors, and expose higher level self-service APIs for application teams to consume.
 
 ## Upstream References
 * <https://crossplane.io>
+
+### Upstream Release Notes
+
+- [Crossplane Release Notes](https://github.com/crossplane/crossplane/releases/tag/v1.16.0)
 
 ## Learn More
 * [Application Overview](docs/overview.md)
@@ -41,7 +46,8 @@ helm install crossplane chart/
 | nodeSelector | object | `{}` | Add `nodeSelectors` to the Crossplane pod deployment. |
 | tolerations | list | `[]` | Add `tolerations` to the Crossplane pod deployment. |
 | affinity | object | `{}` | Add `affinities` to the Crossplane pod deployment. |
-| hostNetwork | bool | `false` | Enable `hostNetwork` for the Crossplane deployment. Caution: enabling `hostNetwork` grants the Crossplane Pod access to the host network namespace. |
+| hostNetwork | bool | `false` | Enable `hostNetwork` for the Crossplane deployment. Caution: enabling `hostNetwork` grants the Crossplane Pod access to the host network namespace. Consider setting `dnsPolicy` to `ClusterFirstWithHostNet`. |
+| dnsPolicy | string | `""` | Specify the `dnsPolicy` to be used by the Crossplane pod. |
 | customLabels | object | `{}` | Add custom `labels` to the Crossplane pod deployment. |
 | customAnnotations | object | `{}` | Add custom `annotations` to the Crossplane pod deployment. |
 | serviceAccount.customAnnotations | object | `{}` | Add custom `annotations` to the Crossplane ServiceAccount. |
@@ -49,9 +55,11 @@ helm install crossplane chart/
 | args | list | `[]` | Add custom arguments to the Crossplane pod. |
 | provider.packages | list | `[]` | A list of Provider packages to install. |
 | configuration.packages | list | `[]` | A list of Configuration packages to install. |
-| imagePullSecrets | list | `["private-registry"]` | The imagePullSecret names to add to the Crossplane ServiceAccount. imagePullSecrets: {} |
+| function.packages | list | `[]` | A list of Function packages to install |
+| imagePullSecrets | list | `["private-registry"]` | The imagePullSecret names to add to the Crossplane ServiceAccount. imagePullSecrets: [] |
 | registryCaBundleConfig.name | string | `""` | The ConfigMap name containing a custom CA bundle to enable fetching packages from registries with unknown or untrusted certificates. |
 | registryCaBundleConfig.key | string | `""` | The ConfigMap key containing a custom CA bundle to enable fetching packages from registries with unknown or untrusted certificates. |
+| service.customAnnotations | object | `{}` | Configure annotations on the service object. Only enabled when webhooks.enabled = true |
 | webhooks.enabled | bool | `true` | Enable webhooks for Crossplane and installed Provider packages. |
 | rbacManager.deploy | bool | `true` | Deploy the RBAC Manager pod and its required roles. |
 | rbacManager.skipAggregatedClusterRoles | bool | `false` | Don't install aggregated Crossplane ClusterRoles. |
@@ -62,8 +70,8 @@ helm install crossplane chart/
 | rbacManager.tolerations | list | `[]` | Add `tolerations` to the RBAC Manager pod deployment. |
 | rbacManager.affinity | object | `{}` | Add `affinities` to the RBAC Manager pod deployment. |
 | priorityClassName | string | `""` | The PriorityClass name to apply to the Crossplane and RBAC Manager pods. |
-| resourcesCrossplane.limits.cpu | string | `"100m"` | CPU resource limits for the Crossplane pod. |
-| resourcesCrossplane.limits.memory | string | `"512Mi"` | Memory resource limits for the Crossplane pod. |
+| resourcesCrossplane.limits.cpu | string | `"500m"` | CPU resource limits for the Crossplane pod. |
+| resourcesCrossplane.limits.memory | string | `"1024Mi"` | Memory resource limits for the Crossplane pod. |
 | resourcesCrossplane.requests.cpu | string | `"100m"` | CPU resource requests for the Crossplane pod. |
 | resourcesCrossplane.requests.memory | string | `"256Mi"` | Memory resource requests for the Crossplane pod. |
 | securityContextCrossplane.runAsUser | int | `65532` | The user ID used by the Crossplane pod. |
@@ -98,3 +106,8 @@ helm install crossplane chart/
 ## Contributing
 
 Please see the [contributing guide](./CONTRIBUTING.md) if you are interested in contributing.
+
+---
+
+_This file is programatically generated using `helm-docs` and some BigBang-specific templates. The `gluon` repository has [instructions for regenerating package READMEs](https://repo1.dso.mil/big-bang/product/packages/gluon/-/blob/master/docs/bb-package-readme.md)._
+
