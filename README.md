@@ -1,7 +1,7 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # crossplane
 
-![Version: 1.17.0-bb.0](https://img.shields.io/badge/Version-1.17.0--bb.0-informational?style=flat-square) ![AppVersion: 1.17.0](https://img.shields.io/badge/AppVersion-1.17.0-informational?style=flat-square)
+![Version: 1.17.1-bb.0](https://img.shields.io/badge/Version-1.17.1--bb.0-informational?style=flat-square) ![AppVersion: 1.17.1](https://img.shields.io/badge/AppVersion-1.17.1-informational?style=flat-square)
 
 Crossplane is an open source Kubernetes add-on that enables platform teams to assemble infrastructure from multiple vendors, and expose higher level self-service APIs for application teams to consume.
 
@@ -10,7 +10,7 @@ Crossplane is an open source Kubernetes add-on that enables platform teams to as
 
 ### Upstream Release Notes
 
-- [Crossplane Release Notes](https://github.com/crossplane/crossplane/releases/tag/v1.17.0)
+- [Crossplane Release Notes](https://github.com/crossplane/crossplane/releases/tag/v1.17.1)
 
 ## Learn More
 * [Application Overview](docs/overview.md)
