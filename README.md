@@ -1,7 +1,7 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # crossplane
 
-![Version: 1.16.0-bb.0](https://img.shields.io/badge/Version-1.16.0--bb.0-informational?style=flat-square) ![AppVersion: 1.16.0](https://img.shields.io/badge/AppVersion-1.16.0-informational?style=flat-square)
+![Version: 1.17.0-bb.0](https://img.shields.io/badge/Version-1.17.0--bb.0-informational?style=flat-square) ![AppVersion: 1.17.0](https://img.shields.io/badge/AppVersion-1.17.0-informational?style=flat-square)
 
 Crossplane is an open source Kubernetes add-on that enables platform teams to assemble infrastructure from multiple vendors, and expose higher level self-service APIs for application teams to consume.
 
@@ -10,7 +10,7 @@ Crossplane is an open source Kubernetes add-on that enables platform teams to as
 
 ### Upstream Release Notes
 
-- [Crossplane Release Notes](https://github.com/crossplane/crossplane/releases/tag/v1.16.0)
+- [Crossplane Release Notes](https://github.com/crossplane/crossplane/releases/tag/v1.17.0)
 
 ## Learn More
 * [Application Overview](docs/overview.md)
@@ -46,6 +46,7 @@ helm install crossplane chart/
 | nodeSelector | object | `{}` | Add `nodeSelectors` to the Crossplane pod deployment. |
 | tolerations | list | `[]` | Add `tolerations` to the Crossplane pod deployment. |
 | affinity | object | `{}` | Add `affinities` to the Crossplane pod deployment. |
+| topologySpreadConstraints | list | `[]` | Add `topologySpreadConstraints` to the Crossplane pod deployment. |
 | hostNetwork | bool | `false` | Enable `hostNetwork` for the Crossplane deployment. Caution: enabling `hostNetwork` grants the Crossplane Pod access to the host network namespace. Consider setting `dnsPolicy` to `ClusterFirstWithHostNet`. |
 | dnsPolicy | string | `""` | Specify the `dnsPolicy` to be used by the Crossplane pod. |
 | customLabels | object | `{}` | Add custom `labels` to the Crossplane pod deployment. |
@@ -69,6 +70,7 @@ helm install crossplane chart/
 | rbacManager.nodeSelector | object | `{}` | Add `nodeSelectors` to the RBAC Manager pod deployment. |
 | rbacManager.tolerations | list | `[]` | Add `tolerations` to the RBAC Manager pod deployment. |
 | rbacManager.affinity | object | `{}` | Add `affinities` to the RBAC Manager pod deployment. |
+| rbacManager.topologySpreadConstraints | list | `[]` | Add `topologySpreadConstraints` to the RBAC Manager pod deployment. |
 | priorityClassName | string | `""` | The PriorityClass name to apply to the Crossplane and RBAC Manager pods. |
 | resourcesCrossplane.limits.cpu | string | `"500m"` | CPU resource limits for the Crossplane pod. |
 | resourcesCrossplane.limits.memory | string | `"1024Mi"` | Memory resource limits for the Crossplane pod. |
