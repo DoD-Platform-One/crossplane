@@ -1,26 +1,27 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # crossplane
 
-![Version: 1.17.1-bb.0](https://img.shields.io/badge/Version-1.17.1--bb.0-informational?style=flat-square) ![AppVersion: 1.17.1](https://img.shields.io/badge/AppVersion-1.17.1-informational?style=flat-square)
+![Version: 1.17.2-bb.0](https://img.shields.io/badge/Version-1.17.2--bb.0-informational?style=flat-square) ![AppVersion: 1.17.2](https://img.shields.io/badge/AppVersion-1.17.2-informational?style=flat-square)
 
 Crossplane is an open source Kubernetes add-on that enables platform teams to assemble infrastructure from multiple vendors, and expose higher level self-service APIs for application teams to consume.
 
 ## Upstream References
-* <https://crossplane.io>
+- <https://crossplane.io>
 
-### Upstream Release Notes
+## Upstream Release Notes
 
-- [Crossplane Release Notes](https://github.com/crossplane/crossplane/releases/tag/v1.17.1)
+- [Crossplane Release Notes](https://github.com/crossplane/crossplane/releases/tag/v1.17.2)
 
 ## Learn More
-* [Application Overview](docs/overview.md)
-* [Other Documentation](docs/)
+
+- [Application Overview](docs/overview.md)
+- [Other Documentation](docs/)
 
 ## Pre-Requisites
 
-* Kubernetes Cluster deployed
-* Kubernetes config installed in `~/.kube/config`
-* Helm installed
+- Kubernetes Cluster deployed
+- Kubernetes config installed in `~/.kube/config`
+- Helm installed
 
 Install Helm
 
@@ -28,8 +29,9 @@ https://helm.sh/docs/intro/install/
 
 ## Deployment
 
-* Clone down the repository
-* cd into directory
+- Clone down the repository
+- cd into directory
+
 ```bash
 helm install crossplane chart/
 ```
