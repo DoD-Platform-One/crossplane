@@ -3,6 +3,9 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+## [1.18.0-bb.0] - 2024-11-06
+- Update chart to v1.18.0
+
 ## [1.17.2-bb.0] - 2024-10-29
 - Update chart to v1.17.2
 
