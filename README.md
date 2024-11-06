@@ -1,7 +1,7 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # crossplane
 
-![Version: 1.17.2-bb.0](https://img.shields.io/badge/Version-1.17.2--bb.0-informational?style=flat-square) ![AppVersion: 1.17.2](https://img.shields.io/badge/AppVersion-1.17.2-informational?style=flat-square)
+![Version: 1.18.0-bb.0](https://img.shields.io/badge/Version-1.18.0--bb.0-informational?style=flat-square) ![AppVersion: 1.18.0](https://img.shields.io/badge/AppVersion-1.18.0-informational?style=flat-square)
 
 Crossplane is an open source Kubernetes add-on that enables platform teams to assemble infrastructure from multiple vendors, and expose higher level self-service APIs for application teams to consume.
 
@@ -10,7 +10,7 @@ Crossplane is an open source Kubernetes add-on that enables platform teams to as
 
 ## Upstream Release Notes
 
-- [Crossplane Release Notes](https://github.com/crossplane/crossplane/releases/tag/v1.17.2)
+- [Crossplane Release Notes](https://github.com/crossplane/crossplane/releases/tag/v1.18.0)
 
 ## Learn More
 
@@ -41,6 +41,7 @@ helm install crossplane chart/
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | replicas | int | `1` | The number of Crossplane pod `replicas` to deploy. |
+| revisionHistoryLimit | string | `nil` | The number of Crossplane ReplicaSets to retain. |
 | deploymentStrategy | string | `"RollingUpdate"` | The deployment strategy for the Crossplane and RBAC Manager pods. |
 | image.repository | string | `"registry1.dso.mil/ironbank/opensource/crossplane/crossplane"` | Repository for the Crossplane pod image. |
 | image.tag | string | `""` | The Crossplane image tag. Defaults to the value of `appVersion` in `Chart.yaml`. |
@@ -67,6 +68,7 @@ helm install crossplane chart/
 | rbacManager.deploy | bool | `true` | Deploy the RBAC Manager pod and its required roles. |
 | rbacManager.skipAggregatedClusterRoles | bool | `false` | Don't install aggregated Crossplane ClusterRoles. |
 | rbacManager.replicas | int | `1` | The number of RBAC Manager pod `replicas` to deploy. |
+| rbacManager.revisionHistoryLimit | string | `nil` | The number of RBAC Manager ReplicaSets to retain. |
 | rbacManager.leaderElection | bool | `true` | Enable [leader election](https://docs.crossplane.io/latest/concepts/pods/#leader-election) for the RBAC Manager pod. |
 | rbacManager.args | list | `[]` | Add custom arguments to the RBAC Manager pod. |
 | rbacManager.nodeSelector | object | `{}` | Add `nodeSelectors` to the RBAC Manager pod deployment. |
