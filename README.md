@@ -1,16 +1,17 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # crossplane
 
-![Version: 1.18.2-bb.0](https://img.shields.io/badge/Version-1.18.2--bb.0-informational?style=flat-square) ![AppVersion: 1.18.2](https://img.shields.io/badge/AppVersion-1.18.2-informational?style=flat-square) ![Maintenance Track: unknown](https://img.shields.io/badge/Maintenance_Track-unknown-red?style=flat-square)
+![Version: 1.19.0-bb.0](https://img.shields.io/badge/Version-1.19.0--bb.0-informational?style=flat-square) ![AppVersion: 1.19.0](https://img.shields.io/badge/AppVersion-1.19.0-informational?style=flat-square) ![Maintenance Track: unknown](https://img.shields.io/badge/Maintenance_Track-unknown-red?style=flat-square)
 
 Crossplane is an open source Kubernetes add-on that enables platform teams to assemble infrastructure from multiple vendors, and expose higher level self-service APIs for application teams to consume.
 
 ## Upstream References
+
 - <https://crossplane.io>
 
 ## Upstream Release Notes
 
-- [Crossplane Release Notes](https://github.com/crossplane/crossplane/releases/tag/v1.18.2)
+- [Crossplane Release Notes](https://github.com/crossplane/crossplane/releases/tag/v1.19.0)
 
 ## Learn More
 
@@ -54,6 +55,8 @@ helm install crossplane chart/
 | dnsPolicy | string | `""` | Specify the `dnsPolicy` to be used by the Crossplane pod. |
 | customLabels | object | `{}` | Add custom `labels` to the Crossplane pod deployment. |
 | customAnnotations | object | `{}` | Add custom `annotations` to the Crossplane pod deployment. |
+| serviceAccount.create | bool | `true` | Specifies whether Crossplane ServiceAccount should be created |
+| serviceAccount.name | string | `""` | Provide the name of an already created Crossplane ServiceAccount. Required when `serviceAccount.create` is `false` |
 | serviceAccount.customAnnotations | object | `{}` | Add custom `annotations` to the Crossplane ServiceAccount. |
 | leaderElection | bool | `true` | Enable [leader election](https://docs.crossplane.io/latest/concepts/pods/#leader-election) for the Crossplane pod. |
 | args | list | `[]` | Add custom arguments to the Crossplane pod. |
@@ -65,6 +68,7 @@ helm install crossplane chart/
 | registryCaBundleConfig.key | string | `""` | The ConfigMap key containing a custom CA bundle to enable fetching packages from registries with unknown or untrusted certificates. |
 | service.customAnnotations | object | `{}` | Configure annotations on the service object. Only enabled when webhooks.enabled = true |
 | webhooks.enabled | bool | `true` | Enable webhooks for Crossplane and installed Provider packages. |
+| webhooks.port | string | `""` | The port the webhook server listens on. |
 | rbacManager.deploy | bool | `true` | Deploy the RBAC Manager pod and its required roles. |
 | rbacManager.skipAggregatedClusterRoles | bool | `false` | Don't install aggregated Crossplane ClusterRoles. |
 | rbacManager.replicas | int | `1` | The number of RBAC Manager pod `replicas` to deploy. |
@@ -75,6 +79,7 @@ helm install crossplane chart/
 | rbacManager.tolerations | list | `[]` | Add `tolerations` to the RBAC Manager pod deployment. |
 | rbacManager.affinity | object | `{}` | Add `affinities` to the RBAC Manager pod deployment. |
 | rbacManager.topologySpreadConstraints | list | `[]` | Add `topologySpreadConstraints` to the RBAC Manager pod deployment. |
+| packageManager.enableAutomaticDependencyDowngrade | bool | `false` | Enable automatic dependency version downgrades. This configuration is only used when `--enable-dependency-version-upgrades` flag is passed. |
 | priorityClassName | string | `""` | The PriorityClass name to apply to the Crossplane and RBAC Manager pods. |
 | resourcesCrossplane.limits.cpu | string | `"500m"` | CPU resource limits for the Crossplane pod. |
 | resourcesCrossplane.limits.memory | string | `"1024Mi"` | Memory resource limits for the Crossplane pod. |
@@ -97,6 +102,8 @@ helm install crossplane chart/
 | securityContextRBACManager.allowPrivilegeEscalation | bool | `false` | Enable `allowPrivilegeEscalation` for the RBAC Manager pod. |
 | securityContextRBACManager.readOnlyRootFilesystem | bool | `true` | Set the RBAC Manager pod root file system as read-only. |
 | metrics.enabled | bool | `false` | Enable Prometheus path, port and scrape annotations and expose port 8080 for both the Crossplane and RBAC Manager pods. |
+| metrics.port | string | `""` | The port the metrics server listens on. |
+| readiness.port | string | `""` | The port the readyz server listens on. |
 | extraEnvVarsCrossplane | object | `{}` | Add custom environmental variables to the Crossplane pod deployment. Replaces any `.` in a variable name with `_`. For example, `SAMPLE.KEY=value1` becomes `SAMPLE_KEY=value1`. |
 | extraEnvVarsRBACManager | object | `{}` | Add custom environmental variables to the RBAC Manager pod deployment. Replaces any `.` in a variable name with `_`. For example, `SAMPLE.KEY=value1` becomes `SAMPLE_KEY=value1`. |
 | podSecurityContextCrossplane | object | `{}` | Add a custom `securityContext` to the Crossplane pod. |
