@@ -1,7 +1,7 @@
 <!-- Warning: Do not manually edit this file. See notes on gluon + helm-docs at the end of this file for more information. -->
 # crossplane
 
-![Version: 1.19.1-bb.0](https://img.shields.io/badge/Version-1.19.1--bb.0-informational?style=flat-square) ![AppVersion: 1.19.1](https://img.shields.io/badge/AppVersion-1.19.1-informational?style=flat-square) ![Maintenance Track: unknown](https://img.shields.io/badge/Maintenance_Track-unknown-red?style=flat-square)
+![Version: 1.20.0-bb.0](https://img.shields.io/badge/Version-1.20.0--bb.0-informational?style=flat-square) ![AppVersion: 1.20.0](https://img.shields.io/badge/AppVersion-1.20.0-informational?style=flat-square) ![Maintenance Track: unknown](https://img.shields.io/badge/Maintenance_Track-unknown-red?style=flat-square)
 
 Crossplane is an open source Kubernetes add-on that enables platform teams to assemble infrastructure from multiple vendors, and expose higher level self-service APIs for application teams to consume.
 
@@ -11,7 +11,7 @@ Crossplane is an open source Kubernetes add-on that enables platform teams to as
 
 ## Upstream Release Notes
 
-- [Crossplane Release Notes](https://github.com/crossplane/crossplane/releases/tag/v1.19.1)
+- [Crossplane Release Notes](https://github.com/crossplane/crossplane/releases/tag/v1.20.0)
 
 ## Learn More
 
@@ -79,8 +79,8 @@ helm install crossplane chart/
 | rbacManager.tolerations | list | `[]` | Add `tolerations` to the RBAC Manager pod deployment. |
 | rbacManager.affinity | object | `{}` | Add `affinities` to the RBAC Manager pod deployment. |
 | rbacManager.topologySpreadConstraints | list | `[]` | Add `topologySpreadConstraints` to the RBAC Manager pod deployment. |
-| packageManager.enableAutomaticDependencyDowngrade | bool | `false` | Enable automatic dependency version downgrades. This configuration is only used when `--enable-dependency-version-upgrades` flag is passed. |
 | priorityClassName | string | `""` | The PriorityClass name to apply to the Crossplane and RBAC Manager pods. |
+| runtimeClassName | string | `""` | The runtimeClassName name to apply to the Crossplane and RBAC Manager pods. |
 | resourcesCrossplane.limits.cpu | string | `"500m"` | CPU resource limits for the Crossplane pod. |
 | resourcesCrossplane.limits.memory | string | `"1024Mi"` | Memory resource limits for the Crossplane pod. |
 | resourcesCrossplane.requests.cpu | string | `"100m"` | CPU resource requests for the Crossplane pod. |
@@ -93,6 +93,9 @@ helm install crossplane chart/
 | packageCache.sizeLimit | string | `"20Mi"` | The size limit for the package cache. If medium is `Memory` the `sizeLimit` can't exceed Node memory. |
 | packageCache.pvc | string | `""` | The name of a PersistentVolumeClaim to use as the package cache. Disables the default package cache `emptyDir` Volume. |
 | packageCache.configMap | string | `""` | The name of a ConfigMap to use as the package cache. Disables the default package cache `emptyDir` Volume. |
+| functionCache.medium | string | `""` | Set to `Memory` to hold the function cache in a RAM backed file system. Useful for Crossplane development. |
+| functionCache.sizeLimit | string | `"512Mi"` | The size limit for the function cache. If medium is `Memory` the `sizeLimit` can't exceed Node memory. |
+| functionCache.pvc | string | `""` | The name of a PersistentVolumeClaim to use as the function cache. Disables the default function cache `emptyDir` Volume. |
 | resourcesRBACManager.limits.cpu | string | `"100m"` | CPU resource limits for the RBAC Manager pod. |
 | resourcesRBACManager.limits.memory | string | `"512Mi"` | Memory resource limits for the RBAC Manager pod. |
 | resourcesRBACManager.requests.cpu | string | `"100m"` | CPU resource requests for the RBAC Manager pod. |
